@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  resources :attachments
+
+  resources :flags
+
+  resources :likes
+
+  resources :comments
+
+  resources :lectures
+
+  resources :courses
+
   get 'home/index'
   devise_for :users
   # devise_for :users do
