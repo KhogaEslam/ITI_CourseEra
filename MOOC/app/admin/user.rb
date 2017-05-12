@@ -1,5 +1,5 @@
 ActiveAdmin.register User do
-  permit_params  :email, :password, :password_confirmation, :first_name, :last_name, :avatar, role_ids: []
+  permit_params  :email, :password, :password_confirmation, :first_name, :last_name, :avatar, :date_of_birth, role_ids: []
 
   index do
     selectable_column
@@ -10,6 +10,7 @@ ActiveAdmin.register User do
     column :first_name
     column :last_name
     column :email
+    column :date_of_birth
     column :current_sign_in_at
     column :sign_in_count
     column :created_at
@@ -22,6 +23,7 @@ ActiveAdmin.register User do
   filter :first_name
   filter :last_name
   filter :email
+  filter :date_of_birth
   filter :current_sign_in_at
   filter :sign_in_count
   filter :created_at
@@ -33,6 +35,7 @@ ActiveAdmin.register User do
       f.input :first_name
       f.input :last_name
       f.input :email
+      f.input :date_of_birth, :start_year => 1900
       f.input :password
       f.input :password_confirmation
       f.input :roles, as: :select, multiple: true, collection: Role.all
@@ -72,6 +75,7 @@ ActiveAdmin.register User do
       row :first_name
       row :last_name
       row :email
+      row :date_of_birth
       row :roles do |r|
         r.roles.map { |role| role.name }.join(", ")
       end

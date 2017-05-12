@@ -6,5 +6,7 @@ class Role < ActiveRecord::Base
             :inclusion => { :in => Rolify.resource_types },
             :allow_nil => true
 
-  scopify
+  # scopify
+
+  scope :normal_user_roles, -> {where.not(name: 'admin')}
 end
