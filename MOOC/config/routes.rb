@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
   resources :attachments
 
   resources :flags
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
   resources :courses
 
   get 'home/index'
+  
   devise_for :users
   # devise_for :users do
   #   GET '/users/sign_out' => 'devise/sessions#destroy'

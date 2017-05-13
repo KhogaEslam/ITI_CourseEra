@@ -52,5 +52,7 @@ gem 'rolify'
 
 
 gem 'bootstrap-sass'
-gem 'carrierwave'
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 gem 'mini_magick'
+gem 'mongoid'
+gem 'ckeditor'

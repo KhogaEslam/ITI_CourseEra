@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170512212854) do
+ActiveRecord::Schema.define(version: 20170513210210) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20170512212854) do
     t.integer  "lecture_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
   end
 
   add_index "attachments", ["lecture_id"], name: "index_attachments_on_lecture_id", using: :btree
@@ -67,15 +68,8 @@ ActiveRecord::Schema.define(version: 20170512212854) do
   add_index "flags", ["lecture_id"], name: "index_flags_on_lecture_id", using: :btree
   add_index "flags", ["user_id"], name: "index_flags_on_user_id", using: :btree
 
-  create_table "lectures", force: true do |t|
-    t.string   "description"
-    t.string   "video"
-    t.integer  "course_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "lectures", ["course_id"], name: "index_lectures_on_course_id", using: :btree
+# Could not dump table "lectures" because of following StandardError
+#   Unknown type 'json' for column 'attachments'
 
   create_table "likes", force: true do |t|
     t.integer  "lecture_id"
