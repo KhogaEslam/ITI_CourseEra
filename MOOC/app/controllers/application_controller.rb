@@ -21,5 +21,8 @@ class ApplicationController < ActionController::Base
                                                                    :password_confirmation, :current_password, :avatar, :avatar_cache, role_ids: []) }
   end
 
-
+  # def current_ability
+  #   @current_ability ||= Ability.new(current_member)
+  # end
+  # alias_method :current_user, :current_ability
 end

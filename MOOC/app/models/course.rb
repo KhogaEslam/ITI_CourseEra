@@ -1,4 +1,5 @@
 class Course < ActiveRecord::Base
+  resourcify
   belongs_to :user
   has_many :lectures
 

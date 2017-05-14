@@ -4,7 +4,8 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'
 # Use mysql as the database for Active Record
-gem 'mysql2'
+gem 'mysql2', '~> 0.3.18'
+gem 'mongoid'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -39,20 +40,26 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
 
 ################################
-##  MY GEMS
+##  MY ADDITIONS
 ################################
 ##  FOR ACTIVEADMIN
-gem 'activeadmin'
+gem 'activeadmin', '~> 1.0.0.pre1'
 
 # Plus integrations with:
 gem 'devise'
-gem 'cancancan'
+gem 'cancancan' # or cancancan
 gem 'draper'
 gem 'rolify'
 
+##
 
 gem 'bootstrap-sass'
-gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+gem 'carrierwave'
 gem 'mini_magick'
-gem 'mongoid'
+
 gem 'ckeditor'
+
+gem 'acts_as_votable'
+gem 'acts_as_commentable'
+
+gem 'rspec'

@@ -2,18 +2,57 @@
 
 <p>
   <strong>Description:</strong>
-  <%= @lecture.description %>
+  <%= raw(@lecture.description) %>
 </p>
 
 <p>
   <strong>Video:</strong>
-  <%= @lecture.video %>
+  <%= video_tag "#{@lecture.video_url}", :size => "320x240", :controls => true %>
 </p>
 
 <p>
   <strong>Course:</strong>
-  <%= @lecture.course %>
+  <%= link_to @lecture.course.title, @lecture.course %>
 </p>
 
+<p>
+  <p><strong>Attachments:</strong></p>
+  <% @lecture.attachments.each do |attachment| %>
+  <%= link_to attachment, attachment.url, target: '_blank' %>
+  <br>
+  <% end %>
+</p>
+<br>
+
+<%= link_to like_lecture_path(@lecture), method: :put do %>
+  Like
+  <%= @lecture.get_upvotes.size %>
+<% end %>
+
+<%= link_to flag_lecture_path(@lecture), method: :put do %>
+  Flag
+  <%= @lecture.get_downvotes.size %>
+<% end %>
+<br>
+<h4>students Feedback:</h4>
+<div class="comment_list">
+  <% @comments.each do |comment| %>
+    <%= comment.comment %> <br>
+    <%= time_ago_in_words(comment.created_at) %> <br>
+      <%= "#{comment.user.first_name} #{comment.user.last_name}" %> <br>
+        <br>
+    <% end %>
+</div>
+<h5>Add Feedback:</h5>
+<div class="comment-section">
+  <%= form_tag create_comment_path, method: "post" do %>
+    <%= hidden_field_tag "id", @lecture.id %>
+      <%= text_area_tag :comment %>
+      <%= submit_tag "Submit" %>
+    <% end %>
+</div>
+
+<% if can? :edit, @lecture %>
 <%= link_to 'Edit', edit_lecture_path(@lecture) %> |
+<% end %>
 <%= link_to 'Back', lectures_path %>

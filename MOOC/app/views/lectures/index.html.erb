@@ -13,17 +13,22 @@
   <tbody>
     <% @lectures.each do |lecture| %>
       <tr>
-        <td><%= lecture.description %></td>
-        <td><%= lecture.video %></td>
-        <td><%= lecture.course %></td>
+        <td><%= raw(lecture.description) %></td>
+        <td><%= link_to 'Video Download', lecture.video_url %></td>
+        <td><%= link_to lecture.course.title, lecture.course %></td>
         <td><%= link_to 'Show', lecture %></td>
+        <% if can? :edit, lecture %>
         <td><%= link_to 'Edit', edit_lecture_path(lecture) %></td>
+        <% end %>
+        <% if can? :destroy, lecture %>
         <td><%= link_to 'Destroy', lecture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
+<% if can? :create, @lecture %>
 <%= link_to 'New Lecture', new_lecture_path %>
+<% end %>

@@ -4,16 +4,23 @@ Rails.application.routes.draw do
 
   resources :flags
 
-  resources :likes
+  # resources :likes
+  resources :lectures do
+   member do
+    put "like", to: "lectures#like"
+    put "flag", to: "lectures#flag"
+   end
+  end
 
-  resources :comments
+  post 'comments' => 'comments#create', as: "create_comment"
+  # resources :comments
 
   resources :lectures
 
   resources :courses
 
   get 'home/index'
-  
+
   devise_for :users
   # devise_for :users do
   #   GET '/users/sign_out' => 'devise/sessions#destroy'

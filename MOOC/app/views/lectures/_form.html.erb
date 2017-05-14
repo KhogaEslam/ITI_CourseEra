@@ -12,17 +12,25 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :course_id %><br>
+    <%= f.collection_select(:course_id, Course.all, :id, :title) %>
+  </div>
+
+  <div class="field">
     <%= f.label :description %><br>
-    <%= f.text_field :description %>
+    <%= f.cktext_area :description %>
   </div>
   <div class="field">
     <%= f.label :video %><br>
-    <%= f.text_field :video %>
+    <%= f.file_field :video %>
   </div>
+
   <div class="field">
-    <%= f.label :course_id %><br>
-    <%= f.text_field :course_id %>
+    <%= f.label :attachments %><br>
+    <%= f.file_field :attachments, multiple: true  %>
+    <%= f.hidden_field :attachments_cache %>
   </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -7,8 +7,9 @@
 
 <p>
   <strong>User:</strong>
-  <%= @course.user %>
+  <%= "#{@course.user.first_name} #{@course.user.last_name}" %>
 </p>
-
+<% if can? :edit, @course %>
 <%= link_to 'Edit', edit_course_path(@course) %> |
+<% end %>
 <%= link_to 'Back', courses_path %>

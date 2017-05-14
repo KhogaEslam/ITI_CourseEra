@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170513210210) do
+ActiveRecord::Schema.define(version: 20170514190558) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -39,14 +39,18 @@ ActiveRecord::Schema.define(version: 20170513210210) do
   add_index "attachments", ["lecture_id"], name: "index_attachments_on_lecture_id", using: :btree
 
   create_table "comments", force: true do |t|
-    t.string   "text"
+    t.string   "title",            limit: 50, default: ""
+    t.text     "comment"
     t.integer  "lecture_id"
+    t.string   "commentable_type"
     t.integer  "user_id"
+    t.string   "role",                        default: "comments"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "comments", ["lecture_id"], name: "index_comments_on_lecture_id", using: :btree
+  add_index "comments", ["commentable_type"], name: "index_comments_on_commentable_type", using: :btree
+  add_index "comments", ["lecture_id"], name: "index_comments_on_commentable_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "courses", force: true do |t|
@@ -121,5 +125,20 @@ ActiveRecord::Schema.define(version: 20170513210210) do
   end
 
   add_index "users_roles", ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
+
+  create_table "votes", force: true do |t|
+    t.integer  "votable_id"
+    t.string   "votable_type"
+    t.integer  "voter_id"
+    t.string   "voter_type"
+    t.boolean  "vote_flag"
+    t.string   "vote_scope"
+    t.integer  "vote_weight"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "votes", ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope", using: :btree
+  add_index "votes", ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope", using: :btree
 
 end
