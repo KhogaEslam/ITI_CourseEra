@@ -63,3 +63,9 @@ gem 'acts_as_votable'
 gem 'acts_as_commentable'
 
 gem 'rspec'
+
+# Trying some templates
+gem 'active_admin_flat_skin'
+gem 'font-awesome-sass', '~> 4.4.0'
+gem 'formadmin'
+gem 'active_skin'

@@ -14,6 +14,8 @@ GEM
       activesupport (= 4.1.8)
       builder (~> 3.1)
       erubis (~> 2.7.0)
+    active_admin_flat_skin (0.1.2)
+    active_skin (0.0.12)
     activeadmin (1.0.0.pre5)
       arbre (~> 1.0, >= 1.0.2)
       bourbon
@@ -89,6 +91,10 @@ GEM
       request_store (~> 1.0)
     erubis (2.7.0)
     execjs (2.7.0)
+    font-awesome-sass (4.4.0)
+      sass (>= 3.2)
+    formadmin (0.1.6)
+      activeadmin
     formtastic (3.1.5)
       actionpack (>= 3.2.13)
     formtastic_i18n (0.6.0)
@@ -221,6 +227,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_admin_flat_skin
+  active_skin
   activeadmin (~> 1.0.0.pre1)
   acts_as_commentable
   acts_as_votable
@@ -231,6 +239,8 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   devise
   draper
+  font-awesome-sass (~> 4.4.0)
+  formadmin
   jbuilder (~> 2.0)
   jquery-rails
   mini_magick

@@ -32,7 +32,7 @@ ActiveAdmin.register Lecture do
   index do
     selectable_column
     id_column
-    column :description
+    column raw(:description)
     column :course
     column :created_at
     column :update_at
@@ -51,7 +51,7 @@ ActiveAdmin.register Lecture do
     attributes_table do
       # other rows
       row :id
-      row :description
+      row raw(:description)
       row :course
       row :created_at
       row :update_at
