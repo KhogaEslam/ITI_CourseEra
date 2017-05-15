@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   resources :courses
 
   get 'home/index'
+  get 'home/about'
 
   devise_for :users
   # devise_for :users do

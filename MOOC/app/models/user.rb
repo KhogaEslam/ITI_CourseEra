@@ -24,5 +24,5 @@ class User < ActiveRecord::Base
         self.roles = Role.where(name: 'regular')
       end
   end
-  scope :not_regular_users, -> {User.joins(:roles).where.not(roles: {name: 'regular'})}
+  scope :not_regular_users, -> {User.joins(:roles).where.not(roles: {name: 'regular'}).distinct}
 end

@@ -17,9 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :user %><br />
-    <%= f.select(:user_id, User.not_regular_users.collect {|p| [ p.email, p.id ] },
-                                            {},
-                                           { :multiple => false, :size => 5 }) %>
+    <%= f.select(:user_id, User.not_regular_users.collect {|p| [ p.email, p.id ] },{},{ :multiple => false, :size => 5 }) %>
   </div>
   <div class="actions">
     <%= f.submit %>

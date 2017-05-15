@@ -1,58 +1,139 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Description:</strong>
-  <%= raw(@lecture.description) %>
-</p>
+<div class="row">
 
-<p>
-  <strong>Video:</strong>
-  <%= video_tag "#{@lecture.video_url}", :size => "320x240", :controls => true %>
-</p>
+    <!-- Blog Post Content Column -->
+    <div class="col-lg-8">
 
-<p>
-  <strong>Course:</strong>
-  <%= link_to @lecture.course.title, @lecture.course %>
-</p>
+        <!-- Blog Post -->
 
-<p>
-  <p><strong>Attachments:</strong></p>
-  <% @lecture.attachments.each do |attachment| %>
-  <%= link_to attachment, attachment.url, target: '_blank' %>
-  <br>
-  <% end %>
-</p>
-<br>
+        <!-- Title -->
+        <h1><%= link_to @lecture.course.title, @lecture.course %> > Lecture</h1>
 
-<%= link_to like_lecture_path(@lecture), method: :put do %>
-  Like
-  <%= @lecture.get_upvotes.size %>
-<% end %>
+        <!-- Author -->
+        <p class="lead">
+            by <%= "#{@lecture.course.user.first_name} #{@lecture.course.user.last_name}" %>
+        </p>
 
-<%= link_to flag_lecture_path(@lecture), method: :put do %>
-  Flag
-  <%= @lecture.get_downvotes.size %>
-<% end %>
-<br>
-<h4>students Feedback:</h4>
-<div class="comment_list">
-  <% @comments.each do |comment| %>
-    <%= comment.comment %> <br>
-    <%= time_ago_in_words(comment.created_at) %> <br>
-      <%= "#{comment.user.first_name} #{comment.user.last_name}" %> <br>
-        <br>
-    <% end %>
+        <hr>
+
+        <!-- Date/Time -->
+        <p><span class="glyphicon glyphicon-time"></span> Posted on <%= @lecture.created_at.strftime("%b %d, %Y") %> at <%= @lecture.created_at.strftime("%H:%M") %></p>
+
+        <hr>
+
+        <!-- Preview Image -->
+        <%= video_tag "#{@lecture.video_url}", :size => "700x500", :controls => true %>
+
+        <hr>
+
+        <!-- Post Content -->
+        <p class="lead"><% raw(@lecture.description) %></p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, doloribus, dolorem iusto blanditiis unde eius illum consequuntur neque dicta incidunt ullam ea hic porro optio ratione repellat perspiciatis. Enim, iure!</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, nostrum, aliquid, animi, ut quas placeat totam sunt tempora commodi nihil ullam alias modi dicta saepe minima ab quo voluptatem obcaecati?</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, dolor quis. Sunt, ut, explicabo, aliquam tenetur ratione tempore quidem voluptates cupiditate voluptas illo saepe quaerat numquam recusandae? Qui, necessitatibus, est!</p>
+
+        <hr>
+
+        <!-- Blog Comments -->
+        <!-- Comments Form -->
+        <div class="well">
+            <h4>Leave a Comment:</h4>
+            <%= form_tag create_comment_path, method: "post", role: 'form' do %>
+              <%= hidden_field_tag "id", @lecture.id %>
+              <div class="form-group">
+                <%= text_area_tag :comment, nil, :class => 'form-control', :rows => 3 %>
+                </div>
+                <%= submit_tag "Submit" , {:class => 'btn btn-primary'}%>
+              <% end %>
+        </div>
+
+        <hr>
+        <!-- Posted Comments -->
+        <h4>Students Feedback:</h4>
+        <% @comments.each do |comment| %>
+        <!-- Comment -->
+        <div class="media">
+            <a class="pull-left" href="#">
+                <%= image_tag comment.user.avatar.thumb , :class=> 'media-object' %>
+            </a>
+            <div class="media-body">
+                <h4 class="media-heading">by <%= "#{comment.user.first_name} #{comment.user.last_name}" %>
+                    <small><%= time_ago_in_words(comment.created_at) %></small>
+                </h4>
+                <%= comment.comment %>
+            </div>
+        </div>
+        <% end %>
+    </div>
+
+
+    <!-- Blog Sidebar Widgets Column -->
+    <div class="col-md-4">
+
+            <!-- Blog Search Well -->
+            <div class="well">
+                <h4>Vote | Report</h4>
+                <%= link_to like_lecture_path(@lecture), method: :put do %>
+                  <span class="glyphicon glyphicon-thumbs-up"></span>
+                  <%= @lecture.get_upvotes.size %>
+                <% end %>
+                <br>
+                <%= link_to flag_lecture_path(@lecture), method: :put do %>
+                  <span class="glyphicon glyphicon-thumbs-down"></span>
+                  <%= @lecture.get_downvotes.size %>
+                <% end %>
+                <!-- /.input-group -->
+            </div>
+
+            <!-- Blog Categories Well -->
+            <div class="well">
+                <h4>Attachments:</h4>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <ul class="list-unstyled">
+                            <% @lecture.attachments.each do |attachment| %>
+                            <li>
+                            > <%= link_to attachment.identifier, attachment.url, target: '_blank' %>
+                            </li>
+                            <% end %>
+
+                        </ul>
+                    </div>
+                    <!-- /.col-lg-6 -->
+                </div>
+                <!-- /.row -->
+            </div>
+
+            <div class="well">
+                <% if can?(:edit, @lecture) || can?(:destroy, @lecture) %>
+                <div class="panel panel-primary">
+                <div class="panel-heading">
+                <h3 class="panel-title">Instructor Options</h3>
+                </div>
+                <div class="panel-body">
+                <div class="btn-group">
+                      <ul  class="nav nav-pills">
+                  <% if can? :edit, @lecture %>
+                  <li>
+                  <%= link_to 'Edit', edit_lecture_path(@lecture), {:class => 'btn btn-warning'} %>
+                </li>
+                  <% end %>
+
+                  <% if can? :destroy, @lecture %>
+                  <li>
+                  <%= link_to 'Destroy', @lecture, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+                </li>
+                  <% end %>
+                </ul>
+                </div>
+                </div>
+                </div>
+                <% end %>
+            </div>
+
+    <!-- Blog Sidebar Widgets Column -->
+    <%= render 'layouts/sidebar' %>
 </div>
-<h5>Add Feedback:</h5>
-<div class="comment-section">
-  <%= form_tag create_comment_path, method: "post" do %>
-    <%= hidden_field_tag "id", @lecture.id %>
-      <%= text_area_tag :comment %>
-      <%= submit_tag "Submit" %>
-    <% end %>
-</div>
-
-<% if can? :edit, @lecture %>
-<%= link_to 'Edit', edit_lecture_path(@lecture) %> |
-<% end %>
-<%= link_to 'Back', lectures_path %>
+<!-- /.row -->

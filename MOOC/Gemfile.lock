@@ -243,6 +243,7 @@ DEPENDENCIES
   formadmin
   jbuilder (~> 2.0)
   jquery-rails
+  kaminari
   mini_magick
   mongoid
   mysql2 (~> 0.3.18)
