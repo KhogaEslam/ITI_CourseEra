@@ -1,7 +1,7 @@
 # ITI_CourseEra
 
 Ruby on Rails project created as an ITI Ruby on Rails Course Project
-(Ruby version 2.3.3p222 - Rails version 5.1.1)
+(Ruby version 2.3.3p222 - Rails version 5.1.1 - used Rails gem version  4.1.8)
 
 ## Steps to run Project
 1- download it first for sure :\
@@ -56,38 +56,6 @@ Trying some activeadmin templates
 ![alt tag](https://github.com/KhogaEslam/ITI_CourseEra/blob/master/screenshots/lectures1_2.png)
 
 ![alt tag](https://github.com/KhogaEslam/ITI_CourseEra/blob/master/screenshots/lecture1_1.png)
-
-![alt tag](https://github.com/KhogaEslam/ITI_CourseEra/blob/master/screenshots/lecture1_2.png)
-
-![alt tag](https://github.com/KhogaEslam/ITI_CourseEra/blob/master/screenshots/lecture1_2.png)
-
-![alt tag](https://github.com/KhogaEslam/ITI_CourseEra/blob/master/screenshots/lecture1_3.png)
-
-![alt tag](https://github.com/KhogaEslam/ITI_CourseEra/blob/master/screenshots/login.png)
-
-![alt tag](https://github.com/KhogaEslam/ITI_CourseEra/blob/master/screenshots/signup.png)
-
-![alt tag](https://github.com/KhogaEslam/ITI_CourseEra/blob/master/screenshots/admin1.png)
-
-![alt tag](https://github.com/KhogaEslam/ITI_CourseEra/blob/master/screenshots/admin2.png)
-
-![alt tag](https://github.com/KhogaEslam/ITI_CourseEra/blob/master/screenshots/admin3.png)
-
-![alt tag](https://github.com/KhogaEslam/ITI_CourseEra/blob/master/screenshots/home1.png)
-
-![alt tag](https://github.com/KhogaEslam/ITI_CourseEra/blob/master/screenshots/courses1.png)
-
-![alt tag](https://github.com/KhogaEslam/ITI_CourseEra/blob/master/screenshots/courses2.png)
-
-![alt tag](https://github.com/KhogaEslam/ITI_CourseEra/blob/master/screenshots/courses2_1.png)
-
-![alt tag](https://github.com/KhogaEslam/ITI_CourseEra/blob/master/screenshots/lectures1_1.png)
-
-![alt tag](https://github.com/KhogaEslam/ITI_CourseEra/blob/master/screenshots/lectures1_2.png)
-
-![alt tag](https://github.com/KhogaEslam/ITI_CourseEra/blob/master/screenshots/lecture1_1.png)
-
-![alt tag](https://github.com/KhogaEslam/ITI_CourseEra/blob/master/screenshots/lecture1_2.png)
 
 ![alt tag](https://github.com/KhogaEslam/ITI_CourseEra/blob/master/screenshots/lecture1_2.png)
 
