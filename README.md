@@ -1,6 +1,7 @@
 # ITI_CourseEra
 
 Ruby on Rails project created as an ITI Ruby on Rails Course Project
+(Ruby version 2.3.3p222 - Rails version 5.1.1)
 
 ## Steps to run Project
 1- download it first for sure :\
