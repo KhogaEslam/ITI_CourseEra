@@ -5,12 +5,19 @@ Ruby on Rails project created as an ITI Ruby on Rails Course Project
 
 ## Steps to run Project
 1- download it first for sure :\
+
 2- extract it !
+
 3- cd into MOOC folder
+
 4- run> bundle install
+
 5- run> rake db:migrate
+
 6- run> rake db:seed
+
 7- login as admin with email: **admin@mooc.local** & password: **P@ssw0rd**
+
 8- have fun!
 
 ### Used Gems [all available in Gemfile]
